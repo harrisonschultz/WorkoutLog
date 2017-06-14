@@ -1,0 +1,26 @@
+{
+  "name": "workoutlogserver",
+  "version": "1.0.0",
+  "description": "Server for workout log app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1 \","
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harrisonschultz/WorkoutLog.git"
+  },
+  "author": "harrison schultz",
+  "license": "MIT",
+ "dependencies": {
+   "body-parser": "^1.15.1",
+   "express": "^4.13.4",
+   "pg": "^4.5.6",
+   "pg-hstore": "^2.3.2",
+   "sequelize": "^3.23.3"
+ },
+  "bugs": {
+    "url": "https://github.com/harrisonschultz/WorkoutLog/issues"
+  },
+  "homepage": "https://github.com/harrisonschultz/WorkoutLog#readme"
+}
