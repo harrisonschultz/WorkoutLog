@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var sequelize = require('./db.js');
+var User = sequelize.import('./models/users');
 
 //app includes the headers.js file
 app.use(require('./middleware/headers'));
@@ -13,36 +15,15 @@ app.listen(3000, function () {
 });
 
 
-//SEQUELIZE
-
-var Sequelize = require('sequelize');
-var sequelize = new Sequelize('workoutlog', 'postgres', '969440', {
-    host: 'localhost',
-    dialect: 'postgres'
-});
-
-sequelize.authenticate().then(
-    function () {
-        console.log('connected to workoutlog postgres db');
-
-    },
-    function (err) {
-        console.log(err);
-    }
-);
 
 
-//User.sync({force:true});
+
 app.use(bodyParser.json());
 
-var User = sequelize.define('user', {
-    //creating database object user with properties username and passwordhash then declaring their data types
-    username: Sequelize.STRING,
-    passwordhash: Sequelize.STRING
 
-});
 
-User.sync();
+
+User.sync(); //User.sync({force:true});
 
 app.post('/api/user', function (req, res) {
     //when we post to api user, it will want a user object in the body
