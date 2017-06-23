@@ -17,7 +17,7 @@ app.listen(3000, function () {
 
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize('workoutlog', 'postgres', '969440', {
-    host: 'locahost',
+    host: 'localhost',
     dialect: 'postgres'
 });
 
@@ -32,38 +32,40 @@ sequelize.authenticate().then(
 );
 
 
-
-User.sync();
 //User.sync({force:true});
 app.use(bodyParser.json());
+
+var User = sequelize.define('user', {
+    //creating database object user with properties username and passwordhash then declaring their data types
+    username: Sequelize.STRING,
+    passwordhash: Sequelize.STRING
+
+});
+
+User.sync();
 
 app.post('/api/user', function (req, res) {
     //when we post to api user, it will want a user object in the body
     var username = req.body.user.username;
     var pass = req.body.user.password;
     // Need to create a user object and use sequelize to put that user into our database
-})
 
-User.create({
-    username: username,
-    passwordhash: ""
-})
-    .then(
-    // Sequelize is going to return the object it created from db.
 
-    function createSuccess(user) {
-        //successful get this:
-        res.json({
-            user: user,
-            message: 'create'
-        })
-    },
-    function createError(err) {
-        res.send(500, err.message);
+    User.create({
+        username: username,
+        passwordhash: ""
+    }).then(
+        // Sequelize is going to return the object it created from db.
+
+        function createSuccess(user) {
+            //successful get this:
+            res.json({
+                user: user,
+                message: 'create'
+            })
+        },
+        function createError(err) {
+            res.send(500, err.message);
         }
-    );
-    var User = sequelize.define('user', {
-    username: Sequelize.STRING,
-    passwordhash: Sequelize.STRING,
-
-});
+        );
+})
