@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width-device-width, initial-scale=1">
     <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
 
     <title>Workout Log</title>
@@ -47,6 +47,25 @@
             </div>
         </div>
     </div>
+
+    <!--log-->
+    <div class="tab-pane" id="log">
+        <h2>log!</h2>
+        <label>Result</label>
+        <input type="text" class="form-control" id="log-result" />
+        <label>Workout</label>
+        <select class="form-control" id="log-definition">
+    </select>
+        <label>notes</notes>
+    <textarea class="form-control" id="log-description" rows="3"></textarea>
+    <button id="log-save" class="btn btn-primary">Save</button>
+    </div>
+    <div class="tab-pane" id="history">
+        <h2>History</h2>
+        <ul class="list-group" id="history-list">
+        </ul>
+    </div>
+   
     <!--Login popup window-->
     <div class="modal fade" id="login-modal" role="dialog">
         <div class="modal-dialog">
@@ -59,16 +78,16 @@
                     <div class="alert alert-danger" style="display:none;" role="alert" id="li_error">
                     </div>
                     <label for="li_username">Username:</label>
-                    <input id="li_username" />
-                    <label for="li_password">Password:</label>
-                    <input type="password" id="li_password" />
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button id="login" type="button" class="btn btn-primary">Login</button>
-                </div>
-            </div>
-        </div>
+        <input id="li_username" />
+        <label for="li_password">Password:</label>
+        <input type="password" id="li_password" />
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button id="login" type="button" class="btn btn-primary">Login</button>
+    </div>
+    </div>
+    </div>
     </div>
 
     <!--Signup Window-->
@@ -102,6 +121,7 @@
     <script src="./app.js"></script>
     <script src="./user/auth.js"></script>
     <script src="./workouts/define.js"></script>
+       <script src="./workouts/log.js"></script>
 </body>
 
 </html>

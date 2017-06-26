@@ -53,7 +53,26 @@ $(document).ready(function () {
             }
         }
     });
-   
+   //bind tab events
+   //bootstrap tab ---> binding to a bootstrap event
+   $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
+       var target = $(e.target).attr("href"); //activated tab
+       if (target === "#log") {
+           WorkoutLog.log.setDefinitions();
+       }
+
+       if ( target === "#history"){
+           WorkoutLog.log.setHistory();
+       }
+   });
+   //bind enter key
+   $(document).on("keypress", function(e){
+       if (e.which === 14 ) {
+           if ($("#signup-modal").is (":visible")){
+               $("#signup").trigger("click");
+           }
+       }
+   });
     var token = window.localStorage.getItem("sessionToken");
     if (token){
         WorkoutLog.setAuthHeader(token);

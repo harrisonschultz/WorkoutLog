@@ -2,7 +2,7 @@ $(function () {
     $.extend(WorkoutLog, {
         //signup method
         signup: function () {
-            //username & password wariables
+            //username & password variables
             var username = $("#su_username").val();
             var password = $("#su_password").val();
             //user object
@@ -26,6 +26,11 @@ $(function () {
                     WorkoutLog.setAuthHeader(data.sessionToken);
                     console.log("You made it !");
                     console.log(data.sessionToken);
+                }
+                   if (data.sessionToken){
+                    WorkoutLog.setAuthHeader(data.sessionToken);
+                    WorkoutLog.definition.fetchAll();
+                    WorkoutLog.log.fetchAll();
                 }
                 $("#signup-modal").modal("hide");
                 $(".disabled").removeClass("disabled");
@@ -63,6 +68,12 @@ $(function () {
             login.done(function (data) {
                 if (data.sessionToken) {
                     WorkoutLog.setAuthHeader(data.sessionToken);
+                }
+
+                if (data.sessionToken){
+                    WorkoutLog.setAuthHeader(data.sessionToken);
+                    WorkoutLog.definition.fetchAll();
+                    WorkoutLog.log.fetchAll();
                 }
 
                 $("#login-modal").modal("hide");
