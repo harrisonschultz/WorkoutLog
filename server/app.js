@@ -8,15 +8,15 @@ var User = sequelize.import('./models/users');
 
 
 app.use(bodyParser.json());
-
+//app includes the headers.js file
+app.use(require('./middleware/headers'));
+app.use(require('./middleware/validate-session'));
 
 app.use('/api/user', require('./routes/user'));
 app.use('/api/login', require('./routes/session'));
 
 
-//app includes the headers.js file
-app.use(require('./middleware/headers'));
-app.use(require('./middleware/validate-session'));
+
 
 app.use('/api/test', function (req, res) {
     res.send("Hello World");
