@@ -3,7 +3,7 @@ $(document).ready(function () {
         var API_BASE= "http://localhost:3000/api/";
         var userDefinitions = [];
         var setAuthHeader = function (sessionToken){
-            window.localStorage.setItem("sessionToken", sesstionToken);
+            window.localStorage.setItem("sessionToken", sessionToken);
             //Set the authorization header
             //This can be done individual calls
             // here we showcase aheaxSetup as a global tool
