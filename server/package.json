@@ -9,6 +9,8 @@
   "author": "HarrisonSchultz",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^7.4.1",
     "sequelize": "^4.2.0"
   }
 }

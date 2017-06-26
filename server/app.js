@@ -5,7 +5,11 @@ var sequelize = require('./db.js');
 var User = sequelize.import('./models/users');
 
 app.use(bodyParser.json());
+
+
 app.use('/api/user', require('./routes/user'));
+app.use('/api/login', require('./routes/session'));
+
 
 //app includes the headers.js file
 app.use(require('./middleware/headers'));
