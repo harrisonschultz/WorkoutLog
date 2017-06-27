@@ -68,7 +68,7 @@ $(document).ready(function () {
    //bind enter key
    $(document).on("keypress", function(e){
        if (e.which === 14 ) {
-           if ($("#signup-modal").is (":visible")){
+           if ($("#signup-modal").is(":visible")){
                $("#signup").trigger("click");
            }
        }
@@ -77,7 +77,7 @@ $(document).ready(function () {
     if (token){
         WorkoutLog.setAuthHeader(token);
     }
-    //expose this to ther other workoputlog modules
+    //expose this to ther other workoutlog modules
      window.WorkoutLog = WorkoutLog;
     
 });

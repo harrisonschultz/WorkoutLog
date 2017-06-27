@@ -7,6 +7,7 @@ router.post('/', function (req, res) {
     //variables
     var description = req.body.definition.desc;
     var logType = req.body.definition.type;
+    //console.log(req);
     var owner = req.user.id;
     //methods
     Definition
@@ -17,9 +18,9 @@ router.post('/', function (req, res) {
             owner: owner
         })
         .then(
-        //createSuccess function
+        //createSuccess functions
         function createSuccess(definition) {
-            //seend a response a json
+            //send a response as json
             res.json({
                 definition: definition
             });

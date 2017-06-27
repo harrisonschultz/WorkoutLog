@@ -12,7 +12,9 @@ module.exports = function(req,res,next){
                     where: {id: decoded.id}
                 }).then(
                     function(user){
+                        console.log("I AM HERE");
                         req.user = user;
+                        console.log(req.user.id);
                         next();
                     },
                     function(){

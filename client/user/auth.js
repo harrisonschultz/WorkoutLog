@@ -66,21 +66,18 @@ $(function () {
             //login done/fail
 
             login.done(function (data) {
-                if (data.sessionToken) {
-                    WorkoutLog.setAuthHeader(data.sessionToken);
-                }
 
                 if (data.sessionToken){
                     WorkoutLog.setAuthHeader(data.sessionToken);
                     WorkoutLog.definition.fetchAll();
                     WorkoutLog.log.fetchAll();
                 }
-
+                console.log("logged in successfully");
                 $("#login-modal").modal("hide");
                 $(".disabled").removeClass("disabled");
                 $("#loginout").text("Logout");
             }).fail(function () {
-                $("#li_error").text("There was an issue with sign up").show();
+                $("#li_error").text("There was an issue with login").show();
             });
         },
         //loginout method
@@ -95,7 +92,7 @@ $(function () {
     //bind events
     $("#signup").on("click", WorkoutLog.signup);
     $("#login").on("click", WorkoutLog.login);
-    $("#logininout").on("click", WorkoutLog.logininout);
+    $("#loginout").on("click", WorkoutLog.loginout);
 
     if (window.localStorage.getItem("sessionToken")){
         $("#loginout").text("Logout");

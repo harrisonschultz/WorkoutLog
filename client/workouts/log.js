@@ -3,7 +3,7 @@ $(function(){
         log: {
             workouts: [],
             setDefinitions: function(){
-                var defs = WorkoutLog.definitionuserDefinitions;
+                var defs = WorkoutLog.definition.userDefinitions;
                 var len = defs.length;
                 var opts;
                 for (var i = 0; i < len; i++){
@@ -13,7 +13,7 @@ $(function(){
                 $("#log-definition").append(opts);
             },
             setHistory: function(){
-                var history = WorkoutLog.logworkouts;
+                var history = WorkoutLog.log.workouts;
                 var len = history.length;
                 var lis = "";
                 for (var i = 0; i < len; i ++){
@@ -31,7 +31,7 @@ $(function(){
                 var postData = {log: itsLog};
                 var logger = $.ajax ({
                     type:"POST",
-                    url: WorkouLog.API_BASE + "log",
+                    url: WorkoutLog.API_BASE + "log",
                     data: JSON.stringify(postData),
                     contentType: "application/json"
 

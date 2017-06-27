@@ -6,7 +6,8 @@ var bodyParser = require('body-parser');
 var sequelize = require('./db.js');
 var User = sequelize.import('./models/users');
 
-
+sequelize.sync();
+ //User.sync({force:true});
 app.use(bodyParser.json());
 //app includes the headers.js file
 app.use(require('./middleware/headers'));
@@ -34,5 +35,5 @@ app.listen(3000, function () {
 
 
 
-User.sync(); //User.sync({force:true});
+
 
