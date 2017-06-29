@@ -60,17 +60,22 @@ $(function () {
                 url: WorkoutLog.API_BASE + "login",
                 data: JSON.stringify(user),
                 contentType: "application/json"
-
+            }).done(function(){
+                console.log("Login POST successful");
+                }).fail(function(err){
+                console.log("Login POST failed" + err);
             });
+
 
             //login done/fail
 
             login.done(function (data) {
-
                 if (data.sessionToken){
                     WorkoutLog.setAuthHeader(data.sessionToken);
                     WorkoutLog.definition.fetchAll();
-                    WorkoutLog.log.fetchAll();
+                    WorkoutLog.log.fetchAll();   
+                    var user = data.user;
+                    console.log("This comes from the login.done function in auth.js. User id = " + data.user.id);             
                 }
                 console.log("logged in successfully");
                 $("#login-modal").modal("hide");

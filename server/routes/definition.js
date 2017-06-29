@@ -6,16 +6,15 @@ var Definition = sequelize.import('../models/definition');
 router.post('/', function (req, res) {
     //variables
     var description = req.body.definition.desc;
-    var logType = req.body.definition.type;
-    //console.log(req);
-    var owner = req.user.id;
+    var logType = req.body.definition.type;  
+    var userid = req.user.id;
     //methods
     Definition
         //objects must match the model
         .create({
             description: description,
             logType: logType,
-            owner: owner
+            owner: userid
         })
         .then(
         //createSuccess functions
@@ -33,8 +32,9 @@ router.post('/', function (req, res) {
 });
 router.get('/', function (req, res) {
     //user variable
+  
     var userid = req.user.id;
-
+    console.log("GET function called - req.user.id = " + req.user.id);
     Definition
         //findAll
         .findAll({

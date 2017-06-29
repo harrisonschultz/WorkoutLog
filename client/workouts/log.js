@@ -45,8 +45,7 @@ $(function(){
                     type: "GET",
                     url: WorkoutLog.API_BASE + "log",
                     headers: {
-                        "authorization":
-                        window.localStorage.getItem("sessionToken")
+                        "authorization":window.localStorage.getItem("sessionToken")
                     }
                 })
                 .done(function(data){

@@ -8,12 +8,15 @@ module.exports = function(req,res,next){
     if (!req.body.user && sessionToken){
         jwt.verify(sessionToken, process.env.JWT_SECRET, function(err,decoded){
             if(decoded){
+                 // try to get the user details from the User model and attach it to the request object
                 User.findOne({
                     where: {id: decoded.id}
                 }).then(
                     function(user){
                         console.log("I AM HERE");
+                        //attach user to request object
                         req.user = user;
+                        
                         console.log(req.user.id);
                         next();
                     },
